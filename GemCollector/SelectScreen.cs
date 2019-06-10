@@ -24,39 +24,41 @@ namespace GemCollector
 
         public SelectScreen()
         {
-            loadSC();
+            LoadSC();
             InitializeComponent();
         }
 
-        private void easyButton_Click(object sender, EventArgs e)
+        int temp1 = scorelist.Count();
+
+        private void EasyButton_Click(object sender, EventArgs e)
         {
             GridHeight = GridWidth = 9;
             GemNum = 10;
             dificulty = "Easy";
-            loadGame();
+            LoadGame();
         }
 
-        private void normalButton_Click(object sender, EventArgs e)
+        private void NormalButton_Click(object sender, EventArgs e)
         {
             GridHeight = GridWidth = 14;
             GemNum = 40;
             dificulty = "Medium";
-            loadGame();
+            LoadGame();
         }
 
-        private void hardButton_Click(object sender, EventArgs e)
+        private void HardButton_Click(object sender, EventArgs e)
         {
             GridWidth = GridHeight = 19;
             GemNum = 70;
             dificulty = "Hard";
-            loadGame();
+            LoadGame();
         }
 
         private void SelectScreen_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawString("Difficulty", new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(400, 50));
-            e.Graphics.DrawString("Clicks", new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(500, 50));
-            e.Graphics.DrawString("Time", new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(600, 50));
+            e.Graphics.DrawString("Difficulty", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(300, 250));
+            e.Graphics.DrawString("Clicks", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(600, 250));
+            e.Graphics.DrawString("Time", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(800, 250));
 
             for (int i = 0; i < scorelist.Count(); i++)
             {
@@ -64,18 +66,21 @@ namespace GemCollector
                 {
                     scorelist.RemoveAt(i);
                 }
-                e.Graphics.DrawString((scorelist[i].difficulty), new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(400, 70 + 20*i));
-                e.Graphics.DrawString((scorelist[i].clicks).ToString(), new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(500, 70 + 20 * i));
-                e.Graphics.DrawString((scorelist[i].time).ToString(), new Font("Times New Romans", 14), new SolidBrush(Color.Black), new Point(600, 70 + 20 * i));
+                if((300 + i * 20)< Screen.PrimaryScreen.Bounds.Height)
+                {
+                    e.Graphics.DrawString((scorelist[i].difficulty), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(350, 300 + 20 * i));
+                    e.Graphics.DrawString((scorelist[i].clicks).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(650, 300 + 20 * i));
+                    e.Graphics.DrawString((scorelist[i].time).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(850, 300 + 20 * i));
+                }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void customButtom_Click(object sender, EventArgs e)
+        private void CustomButtom_Click(object sender, EventArgs e)
         {
             Thread.Sleep(180);
             menuClick.Play();
@@ -86,7 +91,7 @@ namespace GemCollector
             a.Controls.Add(cl);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void LoadButton_Click(object sender, EventArgs e)
         {
             SelectScreen.SavedGrids.Clear();
             string newX, newY, newV;
@@ -134,7 +139,19 @@ namespace GemCollector
             f.Controls.Add(gs);
         }
 
-        public void loadGame()
+        private void SortByTime_Click(object sender, EventArgs e)
+        {
+            scorelist = scorelist.OrderBy(x => x.time).ThenBy(x => x.difficulty).ToList();
+            this.Refresh();
+        }
+
+        private void SortByClicks_Click(object sender, EventArgs e)
+        {
+            scorelist = scorelist.OrderBy(x => x.clicks).ThenBy(x => x.difficulty).ToList();
+            this.Refresh();
+        }
+
+        public void LoadGame()
         {
             GameScreen.NewGrid = true;
             Thread.Sleep(180);
@@ -145,7 +162,7 @@ namespace GemCollector
             f.Controls.Add(gs);
         }
 
-        public void loadSC()
+        public void LoadSC()
         {
             scorelist.Clear();
             string newD, newT, newC;

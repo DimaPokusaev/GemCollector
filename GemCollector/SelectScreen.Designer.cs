@@ -1,4 +1,6 @@
-﻿namespace GemCollector
+﻿using System.Windows.Forms;
+
+namespace GemCollector
 {
     partial class SelectScreen
     {
@@ -28,96 +30,155 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.easyButton = new System.Windows.Forms.Button();
-            this.normalButton = new System.Windows.Forms.Button();
-            this.hardButton = new System.Windows.Forms.Button();
-            this.customButtom = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EasyButton = new System.Windows.Forms.Button();
+            this.NormalButton = new System.Windows.Forms.Button();
+            this.HardButton = new System.Windows.Forms.Button();
+            this.CustomButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.LoadButton = new System.Windows.Forms.Button();
+            this.SortByClicks = new System.Windows.Forms.Button();
+            this.SortByTime = new System.Windows.Forms.Button();
+            this.TitleLable = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // easyButton
+            // EasyButton
             // 
-            this.easyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.easyButton.Location = new System.Drawing.Point(307, 124);
-            this.easyButton.Margin = new System.Windows.Forms.Padding(4);
-            this.easyButton.Name = "easyButton";
-            this.easyButton.Size = new System.Drawing.Size(213, 62);
-            this.easyButton.TabIndex = 0;
-            this.easyButton.Text = "Can I play, Daddy?\r\n(Easy)\r\n";
-            this.easyButton.UseVisualStyleBackColor = true;
-            this.easyButton.Click += new System.EventHandler(this.easyButton_Click);
+            this.EasyButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EasyButton.Location = new System.Drawing.Point(27, 344);
+            this.EasyButton.Margin = new System.Windows.Forms.Padding(4);
+            this.EasyButton.Name = "EasyButton";
+            this.EasyButton.Size = new System.Drawing.Size(283, 89);
+            this.EasyButton.TabIndex = 0;
+            this.EasyButton.Text = "Can I play, Daddy?\r\n(Easy)\r\n";
+            this.EasyButton.UseVisualStyleBackColor = true;
+            this.EasyButton.Click += new System.EventHandler(this.EasyButton_Click);
             // 
-            // normalButton
+            // NormalButton
             // 
-            this.normalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.normalButton.Location = new System.Drawing.Point(307, 218);
-            this.normalButton.Margin = new System.Windows.Forms.Padding(4);
-            this.normalButton.Name = "normalButton";
-            this.normalButton.Size = new System.Drawing.Size(213, 62);
-            this.normalButton.TabIndex = 1;
-            this.normalButton.Text = "Bring \'em on!\r\n(Normal)\r\n";
-            this.normalButton.UseVisualStyleBackColor = true;
-            this.normalButton.Click += new System.EventHandler(this.normalButton_Click);
+            this.NormalButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NormalButton.Location = new System.Drawing.Point(27, 431);
+            this.NormalButton.Margin = new System.Windows.Forms.Padding(4);
+            this.NormalButton.Name = "NormalButton";
+            this.NormalButton.Size = new System.Drawing.Size(283, 89);
+            this.NormalButton.TabIndex = 1;
+            this.NormalButton.Text = "Bring \'em on!\r\n(Normal)\r\n";
+            this.NormalButton.UseVisualStyleBackColor = true;
+            this.NormalButton.Click += new System.EventHandler(this.NormalButton_Click);
             // 
-            // hardButton
+            // HardButton
             // 
-            this.hardButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hardButton.Location = new System.Drawing.Point(307, 309);
-            this.hardButton.Margin = new System.Windows.Forms.Padding(4);
-            this.hardButton.Name = "hardButton";
-            this.hardButton.Size = new System.Drawing.Size(213, 62);
-            this.hardButton.TabIndex = 2;
-            this.hardButton.Text = "I am Death incarnate!\r\n(Hard)\r\n";
-            this.hardButton.UseVisualStyleBackColor = true;
-            this.hardButton.Click += new System.EventHandler(this.hardButton_Click);
+            this.HardButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HardButton.Location = new System.Drawing.Point(27, 518);
+            this.HardButton.Margin = new System.Windows.Forms.Padding(4);
+            this.HardButton.Name = "HardButton";
+            this.HardButton.Size = new System.Drawing.Size(283, 89);
+            this.HardButton.TabIndex = 2;
+            this.HardButton.Text = "I am Death incarnate!\r\n(Hard)\r\n";
+            this.HardButton.UseVisualStyleBackColor = true;
+            this.HardButton.Click += new System.EventHandler(this.HardButton_Click);
             // 
-            // customButtom
+            // CustomButton
             // 
-            this.customButtom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButtom.Location = new System.Drawing.Point(307, 395);
-            this.customButtom.Margin = new System.Windows.Forms.Padding(4);
-            this.customButtom.Name = "customButtom";
-            this.customButtom.Size = new System.Drawing.Size(213, 62);
-            this.customButtom.TabIndex = 3;
-            this.customButtom.Text = "CustomizeYourLevel\r\n(Customise)";
-            this.customButtom.UseVisualStyleBackColor = true;
-            this.customButtom.Click += new System.EventHandler(this.customButtom_Click);
+            this.CustomButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomButton.Location = new System.Drawing.Point(27, 605);
+            this.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CustomButton.Name = "CustomButton";
+            this.CustomButton.Size = new System.Drawing.Size(283, 89);
+            this.CustomButton.TabIndex = 3;
+            this.CustomButton.Text = "CustomizeYourLevel\r\n(Customise)";
+            this.CustomButton.UseVisualStyleBackColor = true;
+            this.CustomButton.Click += new System.EventHandler(this.CustomButtom_Click);
             // 
-            // button1
+            // ExitButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(27, 21);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(213, 62);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Exit\r\n\r\n";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
+            this.ExitButton.Location = new System.Drawing.Point(27, 21);
+            this.ExitButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(213, 62);
+            this.ExitButton.TabIndex = 4;
+            this.ExitButton.Text = "EXIT";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // LoadButton
+            // 
+            this.LoadButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadButton.Location = new System.Drawing.Point(27, 691);
+            this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LoadButton.Name = "LoadButton";
+            this.LoadButton.Size = new System.Drawing.Size(283, 89);
+            this.LoadButton.TabIndex = 5;
+            this.LoadButton.Text = "Load Saved Grid";
+            this.LoadButton.UseVisualStyleBackColor = true;
+            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            // 
+            // SortByClicks
+            // 
+            this.SortByClicks.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByClicks.Location = new System.Drawing.Point(1287, 431);
+            this.SortByClicks.Margin = new System.Windows.Forms.Padding(4);
+            this.SortByClicks.Name = "SortByClicks";
+            this.SortByClicks.Size = new System.Drawing.Size(283, 89);
+            this.SortByClicks.TabIndex = 7;
+            this.SortByClicks.Text = "Sort the score by clicks";
+            this.SortByClicks.UseVisualStyleBackColor = true;
+            this.SortByClicks.Click += new System.EventHandler(this.SortByClicks_Click);
+            // 
+            // SortByTime
+            // 
+            this.SortByTime.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByTime.Location = new System.Drawing.Point(1287, 344);
+            this.SortByTime.Margin = new System.Windows.Forms.Padding(4);
+            this.SortByTime.Name = "SortByTime";
+            this.SortByTime.Size = new System.Drawing.Size(283, 89);
+            this.SortByTime.TabIndex = 6;
+            this.SortByTime.Text = "Sort the score by time";
+            this.SortByTime.UseVisualStyleBackColor = true;
+            this.SortByTime.Click += new System.EventHandler(this.SortByTime_Click);
+            // 
+            // TitleLable
+            // 
+            this.TitleLable.AutoSize = true;
+            this.TitleLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 70F);
+            this.TitleLable.Location = new System.Drawing.Point(387, 37);
+            this.TitleLable.Name = "TitleLable";
+            this.TitleLable.Size = new System.Drawing.Size(803, 132);
+            this.TitleLable.TabIndex = 8;
+            this.TitleLable.Text = "Gem Collector";
             // 
             // SelectScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.customButtom);
-            this.Controls.Add(this.hardButton);
-            this.Controls.Add(this.normalButton);
-            this.Controls.Add(this.easyButton);
+            this.Controls.Add(this.TitleLable);
+            this.Controls.Add(this.SortByClicks);
+            this.Controls.Add(this.SortByTime);
+            this.Controls.Add(this.LoadButton);
+            this.Controls.Add(this.ExitButton);
+            this.Controls.Add(this.CustomButton);
+            this.Controls.Add(this.HardButton);
+            this.Controls.Add(this.NormalButton);
+            this.Controls.Add(this.EasyButton);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SelectScreen";
-            this.Size = new System.Drawing.Size(1303, 898);
+            this.Size = new System.Drawing.Size(1574, 974);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectScreen_Paint);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button easyButton;
-        private System.Windows.Forms.Button normalButton;
-        private System.Windows.Forms.Button hardButton;
-        private System.Windows.Forms.Button customButtom;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EasyButton;
+        private System.Windows.Forms.Button NormalButton;
+        private System.Windows.Forms.Button HardButton;
+        private System.Windows.Forms.Button CustomButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button LoadButton;
+        private Button SortByClicks;
+        private Button SortByTime;
+        private Label TitleLable;
     }
 }

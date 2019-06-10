@@ -41,7 +41,7 @@
             // ClickLable
             // 
             this.ClickLable.AutoSize = true;
-            this.ClickLable.Location = new System.Drawing.Point(1270, 53);
+            this.ClickLable.Location = new System.Drawing.Point(1566, 68);
             this.ClickLable.Name = "ClickLable";
             this.ClickLable.Size = new System.Drawing.Size(114, 17);
             this.ClickLable.TabIndex = 0;
@@ -50,7 +50,7 @@
             // TimeLable
             // 
             this.TimeLable.AutoSize = true;
-            this.TimeLable.Location = new System.Drawing.Point(1270, 91);
+            this.TimeLable.Location = new System.Drawing.Point(1566, 106);
             this.TimeLable.Name = "TimeLable";
             this.TimeLable.Size = new System.Drawing.Size(83, 17);
             this.TimeLable.TabIndex = 1;
@@ -59,7 +59,7 @@
             // FlagLable
             // 
             this.FlagLable.AutoSize = true;
-            this.FlagLable.Location = new System.Drawing.Point(1270, 129);
+            this.FlagLable.Location = new System.Drawing.Point(1566, 144);
             this.FlagLable.Name = "FlagLable";
             this.FlagLable.Size = new System.Drawing.Size(70, 17);
             this.FlagLable.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(1273, 265);
+            this.BackButton.Location = new System.Drawing.Point(1569, 280);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(153, 64);
             this.BackButton.TabIndex = 3;
@@ -87,14 +87,14 @@
             this.OutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.OutputLabel.Location = new System.Drawing.Point(238, 129);
             this.OutputLabel.Name = "OutputLabel";
-            this.OutputLabel.Size = new System.Drawing.Size(159, 58);
+            this.OutputLabel.Size = new System.Drawing.Size(299, 58);
             this.OutputLabel.TabIndex = 4;
             this.OutputLabel.Text = "OutputLabel";
             this.OutputLabel.Visible = false;
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(1273, 365);
+            this.SaveButton.Location = new System.Drawing.Point(1569, 380);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(153, 64);
             this.SaveButton.TabIndex = 6;
@@ -116,7 +116,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1623, 1056);
+            this.Size = new System.Drawing.Size(1731, 1056);
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GameScreen_MouseClick);
