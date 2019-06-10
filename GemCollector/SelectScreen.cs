@@ -127,7 +127,7 @@ namespace GemCollector
             dificulty = "Saved";
             GameScreen.Grid.Clear();
             GameScreen.Grid = SelectScreen.SavedGrids[0].Grid;
-            GameScreen.newgrid = false;
+            GameScreen.NewGrid = false;
             GameScreen gs = new GameScreen();
             Form f = this.FindForm();
             f.Controls.Remove(this);
@@ -136,7 +136,7 @@ namespace GemCollector
 
         public void loadGame()
         {
-            GameScreen.newgrid = true;
+            GameScreen.NewGrid = true;
             Thread.Sleep(180);
             menuClick.Play();
             GameScreen gs = new GameScreen();

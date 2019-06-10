@@ -287,7 +287,7 @@ namespace GemCollector
                     OutputLabel.Visible = true;
                     GameTimer.Enabled = false;
                     OutputLabel.Text = "Congrats, you win, click the button and go again";
-                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.dificulty, TimeTaken,ClickCounter, ""));
+                    SelectScreen.scorelist.Add(new highScore(SelectScreen.dificulty, TimeTaken,ClickCounter, ""));
 
                     ClickCounter = 0;
                     TimeTaken = 0;
@@ -541,7 +541,7 @@ namespace GemCollector
 
             writer.WriteStartElement("Scores");
 
-            foreach (HighScore hs in SelectScreen.scorelist)
+            foreach (highScore hs in SelectScreen.scorelist)
             {
                 writer.WriteStartElement("Score");
 
