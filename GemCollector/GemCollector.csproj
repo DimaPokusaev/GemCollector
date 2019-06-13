@@ -64,7 +64,13 @@
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GridBox.cs" />
-    <Compile Include="highScore.cs" />
+    <Compile Include="HelpScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HelpScreen.Designer.cs">
+      <DependentUpon>HelpScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HighScore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpScreen.resx">
+      <DependentUpon>HelpScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,16 +125,7 @@
     <EmbeddedResource Include="Resources\Click-menu.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_8.png" />
+    <None Include="Resources\Gem.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bedrock.png" />
@@ -137,16 +137,23 @@
     <None Include="Resources\flag.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\_4.png" />
+    <None Include="Resources\5.png" />
+    <None Include="Resources\6.png" />
+    <None Include="Resources\7.png" />
+    <None Include="Resources\8.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\4.png" />
+    <None Include="Resources\grass_top_by_tardifice-d84jizt.png" />
+    <None Include="Resources\background for gemcollector.png" />
+    <None Include="Resources\help_image.png" />
+    <Content Include="savedGrids.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ScoreSaveFile.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

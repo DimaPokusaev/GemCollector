@@ -143,6 +143,16 @@ namespace GemCollector.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_for_gemcollector {
+            get {
+                object obj = ResourceManager.GetObject("background_for_gemcollector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bedrock {
             get {
                 object obj = ResourceManager.GetObject("bedrock", resourceCulture);
@@ -184,6 +194,36 @@ namespace GemCollector.Properties {
         internal static System.Drawing.Bitmap flag {
             get {
                 object obj = ResourceManager.GetObject("flag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gem {
+            get {
+                object obj = ResourceManager.GetObject("Gem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grass_top {
+            get {
+                object obj = ResourceManager.GetObject("grass_top", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help_image {
+            get {
+                object obj = ResourceManager.GetObject("help_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

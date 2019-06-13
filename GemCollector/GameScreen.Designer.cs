@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
             this.ClickLable = new System.Windows.Forms.Label();
             this.TimeLable = new System.Windows.Forms.Label();
             this.FlagLable = new System.Windows.Forms.Label();
@@ -41,27 +42,36 @@
             // ClickLable
             // 
             this.ClickLable.AutoSize = true;
+            this.ClickLable.BackColor = System.Drawing.Color.Transparent;
+            this.ClickLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClickLable.ForeColor = System.Drawing.Color.Black;
             this.ClickLable.Location = new System.Drawing.Point(1566, 68);
             this.ClickLable.Name = "ClickLable";
-            this.ClickLable.Size = new System.Drawing.Size(114, 17);
+            this.ClickLable.Size = new System.Drawing.Size(323, 38);
             this.ClickLable.TabIndex = 0;
             this.ClickLable.Text = "Number of Clicks";
             // 
             // TimeLable
             // 
             this.TimeLable.AutoSize = true;
-            this.TimeLable.Location = new System.Drawing.Point(1566, 106);
+            this.TimeLable.BackColor = System.Drawing.Color.Transparent;
+            this.TimeLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeLable.ForeColor = System.Drawing.Color.Black;
+            this.TimeLable.Location = new System.Drawing.Point(1566, 129);
             this.TimeLable.Name = "TimeLable";
-            this.TimeLable.Size = new System.Drawing.Size(83, 17);
+            this.TimeLable.Size = new System.Drawing.Size(225, 38);
             this.TimeLable.TabIndex = 1;
             this.TimeLable.Text = "Time Taken";
             // 
             // FlagLable
             // 
             this.FlagLable.AutoSize = true;
-            this.FlagLable.Location = new System.Drawing.Point(1566, 144);
+            this.FlagLable.BackColor = System.Drawing.Color.Transparent;
+            this.FlagLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FlagLable.ForeColor = System.Drawing.Color.Black;
+            this.FlagLable.Location = new System.Drawing.Point(1566, 202);
             this.FlagLable.Name = "FlagLable";
-            this.FlagLable.Size = new System.Drawing.Size(70, 17);
+            this.FlagLable.Size = new System.Drawing.Size(187, 38);
             this.FlagLable.TabIndex = 2;
             this.FlagLable.Text = "Flags Left";
             // 
@@ -84,6 +94,7 @@
             // OutputLabel
             // 
             this.OutputLabel.AutoSize = true;
+            this.OutputLabel.BackColor = System.Drawing.Color.Transparent;
             this.OutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.OutputLabel.Location = new System.Drawing.Point(238, 129);
             this.OutputLabel.Name = "OutputLabel";
@@ -107,6 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.BackButton);
@@ -116,7 +128,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1731, 1056);
+            this.Size = new System.Drawing.Size(2050, 1080);
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GameScreen_MouseClick);

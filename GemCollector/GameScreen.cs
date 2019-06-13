@@ -19,6 +19,7 @@ namespace GemCollector
             InitializeComponent();
         }
 
+        #region innitial values
         public static int GridNum;
         public static bool NewGrid;
         public static Point Mouse;
@@ -30,21 +31,23 @@ namespace GemCollector
         bool FlagLimitReached = false;
         public static int ClickCounter;
         public static int TimeTaken;
+        #endregion
 
         private void GameScreen_Load(object sGameEndeder, EventArgs e)
         {
+            // tr is the top right point of the grid used for centering of it on the screen
             tr = new Point((Screen.PrimaryScreen.Bounds.Width - (SelectScreen.GridWidth) * 40) / 2, (Screen.PrimaryScreen.Bounds.Height - (SelectScreen.GridHeight) * 40) / 2);
 
             GameTimer.Enabled = true;
 
-            if (NewGrid)
+            if (NewGrid) // Generates a new grid
             {
                 GridNum = SelectScreen.GridWidth * SelectScreen.GridHeight;
 
                 int counter = 0;
                 bool GridCreated = false;
 
-                // Generate Grid
+                // Generate a blank Grid
                 if (GridCreated == false)
                 {
                     for (int i = 0; i < SelectScreen.GridWidth; i++)
@@ -66,6 +69,8 @@ namespace GemCollector
                         {
                             if ((box.value != "Gem") || (box.value != "TGem") || (box.value != "BGem"))
                             {
+                                // T and B gems are same gems but at the top and bottom of the screen, this information is needed for future use
+                                // T and B gems are used for determining when a column ends when generating numbers and opening up spaces
                                 if (box.y == 0)
                                 {
                                     box.value = "TGem";
@@ -160,14 +165,14 @@ namespace GemCollector
                     #endregion
                 }
             }
-            else
+            else // Takes grid from the XML file
             {
                 int yFinder = 0;
                 int xFinder = 0;
                 int GemFinder = 0;
                 foreach(GridBox b in Grid)
                 {
-                    //Grid.RemoveRange(Grid.Count()/2, Grid.Count() - 1);
+                    // Determines the dimention and number of gems
                     b.appearence = "Invisible";
                     if(xFinder < b.x)
                     {
@@ -193,6 +198,7 @@ namespace GemCollector
             Font font = new Font("Times New Romans", 10);
             SolidBrush textBrush = new SolidBrush(Color.Brown);
 
+            // Draws the appropriet images in the grid boxes
             foreach (GridBox b in Grid)
             {
                 if (b.appearence == "Invisible")
@@ -236,12 +242,11 @@ namespace GemCollector
                             break;
                     }
                 }
-                // Change images so it can take them from resources
             }
 
             Pen linePen = new Pen(Color.Black, 2);
 
-            // Draw Grid
+            #region  Draw Grid
             for (int i = 0; i < SelectScreen.GridHeight + 1; i++)
             {
                 e.Graphics.DrawLine(linePen, new Point((i * 40) + tr.X, tr.Y), new Point((i * 40) + tr.X, (SelectScreen.GridWidth * 40) + tr.Y));
@@ -251,14 +256,18 @@ namespace GemCollector
             {
                 e.Graphics.DrawLine(linePen, new Point(tr.X, (i * 40)+ tr.Y), new Point((SelectScreen.GridHeight * 40)+tr.X, (i * 40)+tr.Y));
             }
+            #endregion
         }
 
         private void GameTimer_Tick(object sGameEndeder, EventArgs e)
         {
+            // Calculates the amount of time taken to solve the puzzle
             TimeTaken++;
             TimeLable.Text = "Time Taken: " + TimeTaken;
-            int counter = 0;
-            int counter2 = 0;
+
+            int counter = 0; // Used for determining number of flags left to place
+            int counter2 = 0; // Used to determine if all of the grid boxes have been uncovered
+
             foreach(GridBox b in Grid)
             {
                 if(b.appearence == "Marked")
@@ -266,10 +275,6 @@ namespace GemCollector
                     counter++;
                 }
 
-                if(((b.appearence == "Marked") || ((b.appearence == "Visible"))))
-                {
-                    counter2++;
-                }
                 FlagLable.Text = "Flags left: " + (SelectScreen.GemNum - counter);
 
                 if((SelectScreen.GemNum - counter) == 0)
@@ -281,13 +286,18 @@ namespace GemCollector
                     FlagLimitReached = false;
                 }
 
-                if(((SelectScreen.GridHeight*SelectScreen.GridWidth) - counter2) == 0)
+                if (((b.appearence == "Marked") || ((b.appearence == "Visible"))))
+                {
+                    counter2++;
+                }
+
+                if (((SelectScreen.GridHeight*SelectScreen.GridWidth) - counter2) == 0) // Check if won
                 {
                     GameEnded = true;
                     OutputLabel.Visible = true;
                     GameTimer.Enabled = false;
                     OutputLabel.Text = "Congrats, you win, click the button and go again";
-                    SelectScreen.scorelist.Add(new highScore(SelectScreen.dificulty, TimeTaken,ClickCounter, ""));
+                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.dificulty, TimeTaken,ClickCounter, ""));
 
                     ClickCounter = 0;
                     TimeTaken = 0;
@@ -295,7 +305,7 @@ namespace GemCollector
             }
         }
 
-        private void BackButton_Click(object sGameEndeder, EventArgs e)
+        private void BackButton_Click(object sGameEndeder, EventArgs e) // Sends you back to select screen 
         {
             Grid.Clear();
             ClickCounter = 0;
@@ -309,21 +319,23 @@ namespace GemCollector
 
         private void GameScreen_MouseClick(object sGameEndeder, MouseEventArgs e)
         {
-            if (!GameEnded)
+            if (!GameEnded) // If game has not ended
             {
                 ClickCounter++;
                 ClickLable.Text = "Number of Clicks: " + ClickCounter;
                 List<GridBox> zerobox = new List<GridBox>();
+
+                Rectangle cursor = new Rectangle(Cursor.Position.X, Cursor.Position.Y, 1, 1); // variable of cursor
+
                 switch (e.Button)
                 {
-                    case MouseButtons.Left:
+                    case MouseButtons.Left: // Opening the block
                         foreach (GridBox box in Grid)
                         {
-                            Rectangle test = new Rectangle(tr.X + (box.x) * 40, tr.Y + (box.y) * 40, 39, 39);
-                            Rectangle cursor = new Rectangle(Cursor.Position.X, Cursor.Position.Y, 1, 1);
+                            Rectangle test = new Rectangle(tr.X + (box.x) * 40, tr.Y + (box.y) * 40, 39, 39); // variable that takes on the rectangle of every grid box to check for intersection with cursor
                             if (test.IntersectsWith(cursor))
                             {
-                                if(box.value == "Gem" || box.value == "TGem" || box.value == "BGem")
+                                if(box.value == "Gem" || box.value == "TGem" || box.value == "BGem") // if clicked on a gem, you lose
                                 {
                                     GameEnded = true;
                                     OutputLabel.Visible = true;
@@ -475,23 +487,22 @@ namespace GemCollector
                         }
                         // Reaveal block
                         break;
-                    case MouseButtons.Right:
+                    case MouseButtons.Right: // Flaging a block
                         Mouse = new Point(Cursor.Position.X, Cursor.Position.Y);
-                        foreach (GridBox b in Grid)
+                        foreach (GridBox box in Grid)
                         {
-                            Rectangle test = new Rectangle(tr.X+(b.x) * 40, tr.Y+(b.y) * 40, 39, 39);
-                            Rectangle cursor = new Rectangle(Cursor.Position.X, Cursor.Position.Y, 1, 1);
+                            Rectangle test = new Rectangle(tr.X + (box.x) * 40, tr.Y + (box.y) * 40, 39, 39); // variable that takes on the rectangle of every grid box to check for intersection with cursor
                             if (test.IntersectsWith(cursor))
                             {
-                                if(!(b.appearence == "Visible"))
+                                if(!(box.appearence == "Visible")) // if was not clicked on before
                                 {
-                                    if ((b.appearence == "Invisible") && !FlagLimitReached)
+                                    if ((box.appearence == "Invisible") && !FlagLimitReached)
                                     {
-                                        b.appearence = "Marked";
+                                        box.appearence = "Marked";
                                     }
                                     else
                                     {
-                                        b.appearence = "Invisible";
+                                        box.appearence = "Invisible";
                                     }
                                 }
 
@@ -505,7 +516,7 @@ namespace GemCollector
 
         }
 
-        private void SaveButton_Click(object sGameEndeder, EventArgs e)
+        private void SaveButton_Click(object sGameEndeder, EventArgs e) // Saves the grid
         {
             SelectScreen.SavedGrids.Add(new SavedGrid(Grid, ""));
 
@@ -535,13 +546,13 @@ namespace GemCollector
             writer.Close();
         }
 
-        public void SaveSC()
+        public void SaveSC() // saves the score
         {
             XmlWriter writer = XmlWriter.Create("ScoreSaveFile.xml", null);
 
             writer.WriteStartElement("Scores");
 
-            foreach (highScore hs in SelectScreen.scorelist)
+            foreach (HighScore hs in SelectScreen.scorelist)
             {
                 writer.WriteStartElement("Score");
 
@@ -555,6 +566,5 @@ namespace GemCollector
 
             writer.Close();
         }
-
     }
 }

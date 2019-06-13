@@ -39,23 +39,32 @@ namespace GemCollector
             this.SortByClicks = new System.Windows.Forms.Button();
             this.SortByTime = new System.Windows.Forms.Button();
             this.TitleLable = new System.Windows.Forms.Label();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EasyButton
             // 
-            this.EasyButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EasyButton.BackColor = System.Drawing.Color.DimGray;
+            this.EasyButton.FlatAppearance.BorderSize = 7;
+            this.EasyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.EasyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EasyButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EasyButton.Location = new System.Drawing.Point(27, 344);
             this.EasyButton.Margin = new System.Windows.Forms.Padding(4);
             this.EasyButton.Name = "EasyButton";
             this.EasyButton.Size = new System.Drawing.Size(283, 89);
             this.EasyButton.TabIndex = 0;
             this.EasyButton.Text = "Can I play, Daddy?\r\n(Easy)\r\n";
-            this.EasyButton.UseVisualStyleBackColor = true;
+            this.EasyButton.UseVisualStyleBackColor = false;
             this.EasyButton.Click += new System.EventHandler(this.EasyButton_Click);
             // 
             // NormalButton
             // 
-            this.NormalButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NormalButton.BackColor = System.Drawing.Color.DimGray;
+            this.NormalButton.FlatAppearance.BorderSize = 7;
+            this.NormalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.NormalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NormalButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NormalButton.Location = new System.Drawing.Point(27, 431);
             this.NormalButton.Margin = new System.Windows.Forms.Padding(4);
             this.NormalButton.Name = "NormalButton";
@@ -67,7 +76,11 @@ namespace GemCollector
             // 
             // HardButton
             // 
-            this.HardButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HardButton.BackColor = System.Drawing.Color.DimGray;
+            this.HardButton.FlatAppearance.BorderSize = 7;
+            this.HardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.HardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HardButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HardButton.Location = new System.Drawing.Point(27, 518);
             this.HardButton.Margin = new System.Windows.Forms.Padding(4);
             this.HardButton.Name = "HardButton";
@@ -79,7 +92,11 @@ namespace GemCollector
             // 
             // CustomButton
             // 
-            this.CustomButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomButton.BackColor = System.Drawing.Color.DimGray;
+            this.CustomButton.FlatAppearance.BorderSize = 7;
+            this.CustomButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.CustomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CustomButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CustomButton.Location = new System.Drawing.Point(27, 605);
             this.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.CustomButton.Name = "CustomButton";
@@ -91,7 +108,11 @@ namespace GemCollector
             // 
             // ExitButton
             // 
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30.25F);
+            this.ExitButton.BackColor = System.Drawing.Color.DimGray;
+            this.ExitButton.FlatAppearance.BorderSize = 7;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitButton.Location = new System.Drawing.Point(27, 21);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(4);
             this.ExitButton.Name = "ExitButton";
@@ -103,7 +124,11 @@ namespace GemCollector
             // 
             // LoadButton
             // 
-            this.LoadButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadButton.BackColor = System.Drawing.Color.DimGray;
+            this.LoadButton.FlatAppearance.BorderSize = 7;
+            this.LoadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.LoadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoadButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoadButton.Location = new System.Drawing.Point(27, 691);
             this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoadButton.Name = "LoadButton";
@@ -115,8 +140,12 @@ namespace GemCollector
             // 
             // SortByClicks
             // 
-            this.SortByClicks.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByClicks.Location = new System.Drawing.Point(1287, 431);
+            this.SortByClicks.BackColor = System.Drawing.Color.DimGray;
+            this.SortByClicks.FlatAppearance.BorderSize = 7;
+            this.SortByClicks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.SortByClicks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SortByClicks.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByClicks.Location = new System.Drawing.Point(1720, 431);
             this.SortByClicks.Margin = new System.Windows.Forms.Padding(4);
             this.SortByClicks.Name = "SortByClicks";
             this.SortByClicks.Size = new System.Drawing.Size(283, 89);
@@ -127,8 +156,12 @@ namespace GemCollector
             // 
             // SortByTime
             // 
-            this.SortByTime.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SortByTime.Location = new System.Drawing.Point(1287, 344);
+            this.SortByTime.BackColor = System.Drawing.Color.DimGray;
+            this.SortByTime.FlatAppearance.BorderSize = 7;
+            this.SortByTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.SortByTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SortByTime.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SortByTime.Location = new System.Drawing.Point(1720, 344);
             this.SortByTime.Margin = new System.Windows.Forms.Padding(4);
             this.SortByTime.Name = "SortByTime";
             this.SortByTime.Size = new System.Drawing.Size(283, 89);
@@ -140,17 +173,36 @@ namespace GemCollector
             // TitleLable
             // 
             this.TitleLable.AutoSize = true;
-            this.TitleLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 70F);
-            this.TitleLable.Location = new System.Drawing.Point(387, 37);
+            this.TitleLable.BackColor = System.Drawing.Color.Transparent;
+            this.TitleLable.Font = new System.Drawing.Font("Lucida Fax", 70F);
+            this.TitleLable.Location = new System.Drawing.Point(537, 29);
             this.TitleLable.Name = "TitleLable";
-            this.TitleLable.Size = new System.Drawing.Size(803, 132);
+            this.TitleLable.Size = new System.Drawing.Size(897, 133);
             this.TitleLable.TabIndex = 8;
             this.TitleLable.Text = "Gem Collector";
+            // 
+            // HelpButton
+            // 
+            this.HelpButton.BackColor = System.Drawing.Color.DimGray;
+            this.HelpButton.FlatAppearance.BorderSize = 7;
+            this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Lucida Fax", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.Location = new System.Drawing.Point(27, 950);
+            this.HelpButton.Margin = new System.Windows.Forms.Padding(4);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(283, 89);
+            this.HelpButton.TabIndex = 9;
+            this.HelpButton.Text = "Help Screen";
+            this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // SelectScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::GemCollector.Properties.Resources.background_for_gemcollector;
+            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.TitleLable);
             this.Controls.Add(this.SortByClicks);
             this.Controls.Add(this.SortByTime);
@@ -162,7 +214,7 @@ namespace GemCollector
             this.Controls.Add(this.EasyButton);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SelectScreen";
-            this.Size = new System.Drawing.Size(1574, 974);
+            this.Size = new System.Drawing.Size(2050, 1980);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SelectScreen_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,5 +232,6 @@ namespace GemCollector
         private Button SortByClicks;
         private Button SortByTime;
         private Label TitleLable;
+        private Button HelpButton;
     }
 }

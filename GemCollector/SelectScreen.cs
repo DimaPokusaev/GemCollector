@@ -18,7 +18,7 @@ namespace GemCollector
         public static string dificulty;
         public static SoundPlayer menuClick = new SoundPlayer(Properties.Resources.Click_menu);
         public static SoundPlayer gameClick = new SoundPlayer(Properties.Resources.Click_game);
-        public static List<highScore> scorelist = new List<highScore>();
+        public static List<HighScore> scorelist = new List<HighScore>();
         public static List<SavedGrid> SavedGrids = new List<SavedGrid>();
 
 
@@ -56,9 +56,10 @@ namespace GemCollector
 
         private void SelectScreen_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawString("Difficulty", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(300, 250));
-            e.Graphics.DrawString("Clicks", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(600, 250));
-            e.Graphics.DrawString("Time", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(800, 250));
+            e.Graphics.DrawString("High Scores", new Font("Broadway", 50), new SolidBrush(Color.Black), new Point(570, 180));
+            e.Graphics.DrawString("Difficulty", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(400, 250));
+            e.Graphics.DrawString("Clicks", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(700, 250));
+            e.Graphics.DrawString("Time", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(1000, 250));
 
             for (int i = 0; i < scorelist.Count(); i++)
             {
@@ -68,9 +69,9 @@ namespace GemCollector
                 }
                 if((300 + i * 20)< Screen.PrimaryScreen.Bounds.Height)
                 {
-                    e.Graphics.DrawString((scorelist[i].difficulty), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(350, 300 + 20 * i));
-                    e.Graphics.DrawString((scorelist[i].clicks).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(650, 300 + 20 * i));
-                    e.Graphics.DrawString((scorelist[i].time).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(850, 300 + 20 * i));
+                    e.Graphics.DrawString((scorelist[i].difficulty), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(450, 300 + 20 * i));
+                    e.Graphics.DrawString((scorelist[i].clicks).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(750, 300 + 20 * i));
+                    e.Graphics.DrawString((scorelist[i].time).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(1050, 300 + 20 * i));
                 }
             }
         }
@@ -151,6 +152,16 @@ namespace GemCollector
             this.Refresh();
         }
 
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(180);
+            menuClick.Play();
+            HelpScreen gs = new HelpScreen();
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            f.Controls.Add(gs);
+        }
+
         public void LoadGame()
         {
             GameScreen.NewGrid = true;
@@ -180,7 +191,7 @@ namespace GemCollector
                     reader.ReadToNextSibling("Time");
                     newC = reader.ReadString();
 
-                    highScore hs = new highScore(newD, Convert.ToInt32(newT), Convert.ToInt32(newC), "");
+                    HighScore hs = new HighScore(newD, Convert.ToInt32(newT), Convert.ToInt32(newC), "");
                     scorelist.Add(hs);
                 }
 
