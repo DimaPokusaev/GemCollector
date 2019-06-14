@@ -15,7 +15,7 @@ namespace GemCollector
     public partial class SelectScreen : UserControl
     {
         public static int GridHeight, GridWidth, GemNum;
-        public static string dificulty;
+        public static string difficulty;
         public static SoundPlayer menuClick = new SoundPlayer(Properties.Resources.Click_menu);
         public static SoundPlayer gameClick = new SoundPlayer(Properties.Resources.Click_game);
         public static List<HighScore> scorelist = new List<HighScore>();
@@ -34,7 +34,7 @@ namespace GemCollector
         {
             GridHeight = GridWidth = 9;
             GemNum = 10;
-            dificulty = "Easy";
+            difficulty = "Easy";
             LoadGame();
         }
 
@@ -42,7 +42,7 @@ namespace GemCollector
         {
             GridHeight = GridWidth = 14;
             GemNum = 40;
-            dificulty = "Medium";
+            difficulty = "Medium";
             LoadGame();
         }
 
@@ -50,7 +50,7 @@ namespace GemCollector
         {
             GridWidth = GridHeight = 19;
             GemNum = 70;
-            dificulty = "Hard";
+            difficulty = "Hard";
             LoadGame();
         }
 
@@ -87,7 +87,7 @@ namespace GemCollector
         {
             Thread.Sleep(180);
             menuClick.Play();
-            dificulty = "Custom";
+            difficulty = "Custom";
             CustomLevel cl = new CustomLevel();
             cl.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - cl.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - cl.Height) / 2);
             Form a = this.FindForm();
@@ -133,7 +133,7 @@ namespace GemCollector
 
             Thread.Sleep(180);
             menuClick.Play();
-            dificulty = "Saved";
+            difficulty = "Saved";
             GameScreen.Grid.Clear();
             GameScreen.Grid = SavedGrids[0].Grid;
             SavedGrids[0].OnLoad();

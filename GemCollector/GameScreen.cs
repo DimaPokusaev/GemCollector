@@ -181,7 +181,7 @@ namespace GemCollector
                     OutputLabel.Visible = true;
                     GameTimer.Enabled = false;
                     OutputLabel.Text = "Congrats, you win, click the button and go again";
-                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.dificulty, TimeTaken, ClickCounter)); // record the score
+                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.difficulty, TimeTaken, ClickCounter)); // record the score
 
                     ClickCounter = 0;
                     TimeTaken = 0;
