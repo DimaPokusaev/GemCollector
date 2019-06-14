@@ -11,7 +11,7 @@ namespace GemCollector
         public int time, clicks;
         public string difficulty;
 
-        public HighScore(string _difficulty, int _time, int _clicks)
+        public highScore(string _difficulty, int _time, int _clicks)
         {
             difficulty = _difficulty;
             time = _time;
