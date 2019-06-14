@@ -26,6 +26,7 @@ namespace GemCollector
         public static List<GridBox> Grid = new List<GridBox>();
         Random randgen = new Random();
         public Point tr;
+        int doubleclickcounter = 0;
 
         bool GameEnded = false;
         bool FlagLimitReached = false;
@@ -65,131 +66,14 @@ namespace GemCollector
                 {
                     foreach (GridBox box in Grid)
                     {
-                        if ((randgen.Next(1, 100) == 20) && counter < SelectScreen.GemNum)
+                        if (((randgen.Next(1, 100) == 20) && counter < SelectScreen.GemNum) && ((box.value != "Gem") || (box.value != "TGem") || (box.value != "BGem")))
                         {
-                            if ((box.value != "Gem") || (box.value != "TGem") || (box.value != "BGem"))
-                            {
-                                // T and B gems are same gems but at the top and bottom of the screen, this information is needed for future use
-                                // T and B gems are used for determining when a column ends when generating numbers and opening up spaces
-                                if (box.y == 0)
-                                {
-                                    box.value = "TGem";
-                                }
-                                else if (box.y == SelectScreen.GridHeight - 1)
-                                {
-                                    box.value = "BGem";
-                                }
-                                else
-                                {
-                                    box.value = "Gem";
-                                }
-                                counter++;
-                            }
+                            box.AddGem();
+                            counter++;
                         }
                     }
                 }
-                #region Generate numbers
-
-                foreach (GridBox box in Grid)
-                {
-                    if (!(box.value == "Gem" || box.value == "TGem" || box.value == "BGem"))
-                    {
-                        counter = 0;
-                        // Top Center
-                        if (Grid.IndexOf(box) + 1 < Grid.Count())
-                        {
-                            if (Grid[Grid.IndexOf(box) + 1].value == "Gem" || Grid[Grid.IndexOf(box) + 1].value == "BGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Bottom Center
-                        if (Grid.IndexOf(box) - 1 > 0)
-                        {
-                            if (Grid[Grid.IndexOf(box) - 1].value == "Gem" || Grid[Grid.IndexOf(box) - 1].value == "TGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Right
-                        if (Grid.IndexOf(box) + SelectScreen.GridHeight < Grid.Count())
-                        {
-                            if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "BGem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "TGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Left
-                        if (Grid.IndexOf(box) - SelectScreen.GridHeight > 0)
-                        {
-                            if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "BGem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "TGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Top Left
-                        if (Grid.IndexOf(box) + SelectScreen.GridHeight + 1 < Grid.Count())
-                        {
-                            if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight + 1].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight + 1].value == "BGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Bottom Right
-                        if (Grid.IndexOf(box) + SelectScreen.GridHeight - 1 < Grid.Count())
-                        {
-                            if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight - 1].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight - 1].value == "TGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Top Right
-                        if (Grid.IndexOf(box) - SelectScreen.GridHeight + 1 > 0)
-                        {
-                            if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight + 1].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight + 1].value == "BGem")
-                            {
-                                counter++;
-                            }
-                        }
-                        // Bottom Left
-                        if (Grid.IndexOf(box) - SelectScreen.GridHeight - 1 > 0)
-                        {
-                            if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight - 1].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight - 1].value == "TGem")
-                            {
-                                counter++;
-                            }
-                        }
-
-                        box.value = Convert.ToString(counter);
-                    }
-                    #endregion
-                }
-            }
-            else // Takes grid from the XML file
-            {
-                int yFinder = 0;
-                int xFinder = 0;
-                int GemFinder = 0;
-                foreach(GridBox b in Grid)
-                {
-                    // Determines the dimention and number of gems
-                    b.appearence = "Invisible";
-                    if(xFinder < b.x)
-                    {
-                        xFinder = b.x;
-                    }
-                    if (yFinder < b.y)
-                    {
-                        yFinder = b.y;
-                    }
-                    if((b.value == "Gem")||(b.value == "TGem")||(b.value == "BGem"))
-                    {
-                        GemFinder++;
-                    }
-                }
-                SelectScreen.GridWidth = xFinder + 1;
-                SelectScreen.GemNum = GemFinder;
-                SelectScreen.GridHeight = yFinder + 1;
+                NumberGennerator();
             }
         }
 
@@ -203,7 +87,7 @@ namespace GemCollector
             {
                 if (b.appearence == "Invisible")
                 {
-                    e.Graphics.DrawImage(Properties.Resources.covered, tr.X+ (b.x) * 40, tr.Y + (b.y) * 40, 39, 39);
+                    e.Graphics.DrawImage(Properties.Resources.covered, tr.X + (b.x) * 40, tr.Y + (b.y) * 40, 39, 39);
                 }
                 else if (b.appearence == "Marked")
                 {
@@ -247,14 +131,14 @@ namespace GemCollector
             Pen linePen = new Pen(Color.Black, 2);
 
             #region  Draw Grid
-            for (int i = 0; i < SelectScreen.GridHeight + 1; i++)
-            {
-                e.Graphics.DrawLine(linePen, new Point((i * 40) + tr.X, tr.Y), new Point((i * 40) + tr.X, (SelectScreen.GridWidth * 40) + tr.Y));
-            }
-
             for (int i = 0; i < SelectScreen.GridWidth + 1; i++)
             {
-                e.Graphics.DrawLine(linePen, new Point(tr.X, (i * 40)+ tr.Y), new Point((SelectScreen.GridHeight * 40)+tr.X, (i * 40)+tr.Y));
+                e.Graphics.DrawLine(linePen, new Point((i * 40) + tr.X, tr.Y), new Point((i * 40) + tr.X, (SelectScreen.GridHeight * 40) + tr.Y));
+            }
+
+            for (int i = 0; i < SelectScreen.GridHeight + 1; i++)
+            {
+                e.Graphics.DrawLine(linePen, new Point(tr.X, (i * 40) + tr.Y), new Point((SelectScreen.GridWidth * 40) + tr.X, (i * 40) + tr.Y));
             }
             #endregion
         }
@@ -268,16 +152,16 @@ namespace GemCollector
             int counter = 0; // Used for determining number of flags left to place
             int counter2 = 0; // Used to determine if all of the grid boxes have been uncovered
 
-            foreach(GridBox b in Grid)
+            foreach (GridBox b in Grid)
             {
-                if(b.appearence == "Marked")
+                if (b.appearence == "Marked")
                 {
                     counter++;
                 }
 
                 FlagLable.Text = "Flags left: " + (SelectScreen.GemNum - counter);
 
-                if((SelectScreen.GemNum - counter) == 0)
+                if ((SelectScreen.GemNum - counter) == 0)
                 {
                     FlagLimitReached = true;
                 }
@@ -291,13 +175,13 @@ namespace GemCollector
                     counter2++;
                 }
 
-                if (((SelectScreen.GridHeight*SelectScreen.GridWidth) - counter2) == 0) // Check if won
+                if (((SelectScreen.GridHeight * SelectScreen.GridWidth) - counter2) == 0) // Check if won
                 {
                     GameEnded = true;
                     OutputLabel.Visible = true;
                     GameTimer.Enabled = false;
                     OutputLabel.Text = "Congrats, you win, click the button and go again";
-                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.dificulty, TimeTaken,ClickCounter, ""));
+                    SelectScreen.scorelist.Add(new HighScore(SelectScreen.dificulty, TimeTaken, ClickCounter)); // record the score
 
                     ClickCounter = 0;
                     TimeTaken = 0;
@@ -335,7 +219,7 @@ namespace GemCollector
                             Rectangle test = new Rectangle(tr.X + (box.x) * 40, tr.Y + (box.y) * 40, 39, 39); // variable that takes on the rectangle of every grid box to check for intersection with cursor
                             if (test.IntersectsWith(cursor))
                             {
-                                if(box.value == "Gem" || box.value == "TGem" || box.value == "BGem") // if clicked on a gem, you lose
+                                if (box.value == "Gem" || box.value == "TGem" || box.value == "BGem") // if clicked on a gem, you lose
                                 {
                                     GameEnded = true;
                                     OutputLabel.Visible = true;
@@ -346,7 +230,7 @@ namespace GemCollector
                                     break;
                                 }
 
-                                if(box.value == "0")
+                                if (box.value == "0")
                                 {
                                     zerobox.Add(box);
                                 }
@@ -355,16 +239,16 @@ namespace GemCollector
                                     box.appearence = "Visible";
                                 }
                                 #region zerobox loop
-                                while(zerobox.Count() > 0)
+                                while (zerobox.Count() > 0)
                                 {
                                     GridBox b = zerobox[0];
                                     Grid[Grid.IndexOf(b)].appearence = "Visible";
                                     // Top Center
                                     if ((Grid.IndexOf(b) + 1 < Grid.Count()) && (b.y != SelectScreen.GridHeight - 1))
                                     {
-                                        if((Grid[Grid.IndexOf(b) + 1].value != "Gem") && (Grid[Grid.IndexOf(b) + 1].value != "TGem"))
+                                        if ((Grid[Grid.IndexOf(b) + 1].value != "Gem") && (Grid[Grid.IndexOf(b) + 1].value != "TGem"))
                                         {
-                                            if((Grid[Grid.IndexOf(b) + 1].value == "0") && (Grid[Grid.IndexOf(b) + 1].appearence == "Invisible"))
+                                            if ((Grid[Grid.IndexOf(b) + 1].value == "0") && (Grid[Grid.IndexOf(b) + 1].appearence == "Invisible"))
                                             {
                                                 zerobox.Add(Grid[Grid.IndexOf(b) + 1]);
                                             }
@@ -485,7 +369,6 @@ namespace GemCollector
                                 #endregion 
                             }
                         }
-                        // Reaveal block
                         break;
                     case MouseButtons.Right: // Flaging a block
                         Mouse = new Point(Cursor.Position.X, Cursor.Position.Y);
@@ -494,7 +377,7 @@ namespace GemCollector
                             Rectangle test = new Rectangle(tr.X + (box.x) * 40, tr.Y + (box.y) * 40, 39, 39); // variable that takes on the rectangle of every grid box to check for intersection with cursor
                             if (test.IntersectsWith(cursor))
                             {
-                                if(!(box.appearence == "Visible")) // if was not clicked on before
+                                if (!(box.appearence == "Visible")) // if was not clicked on before
                                 {
                                     if ((box.appearence == "Invisible") && !FlagLimitReached)
                                     {
@@ -508,7 +391,6 @@ namespace GemCollector
 
                             }
                         }
-                        // Mark block
                         break;
                 }
                 Refresh();
@@ -520,6 +402,13 @@ namespace GemCollector
         {
             SelectScreen.SavedGrids.Add(new SavedGrid(Grid, ""));
 
+            doubleclickcounter++;
+            if(doubleclickcounter == 2) // the button has to be pressed twice for a grid to be saved, this encurages the user to do so
+            {
+                SaveButton.Text = "Grid Saved";
+                doubleclickcounter = 0;
+            }
+
             XmlWriter writer = XmlWriter.Create("savedGrids.xml", null);
 
             writer.WriteStartElement("Grids");
@@ -528,7 +417,7 @@ namespace GemCollector
             {
                 writer.WriteStartElement("Grid");
 
-                foreach(GridBox b in hs.Grid)
+                foreach (GridBox b in hs.Grid)
                 {
                     writer.WriteStartElement("box");
 
@@ -565,6 +454,84 @@ namespace GemCollector
             writer.WriteEndElement();
 
             writer.Close();
+        }
+
+        public void NumberGennerator()
+        {
+            int counter;
+            foreach (GridBox box in Grid)
+            {
+                if (!(box.value == "Gem" || box.value == "TGem" || box.value == "BGem"))
+                {
+                    counter = 0;
+                    // Top Center
+                    if (Grid.IndexOf(box) + 1 < Grid.Count())
+                    {
+                        if (Grid[Grid.IndexOf(box) + 1].value == "Gem" || Grid[Grid.IndexOf(box) + 1].value == "BGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Bottom Center
+                    if (Grid.IndexOf(box) - 1 > 0)
+                    {
+                        if (Grid[Grid.IndexOf(box) - 1].value == "Gem" || Grid[Grid.IndexOf(box) - 1].value == "TGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Right
+                    if (Grid.IndexOf(box) + SelectScreen.GridHeight < Grid.Count())
+                    {
+                        if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "BGem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight].value == "TGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Left
+                    if (Grid.IndexOf(box) - SelectScreen.GridHeight > 0)
+                    {
+                        if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "BGem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight].value == "TGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Top Left
+                    if (Grid.IndexOf(box) + SelectScreen.GridHeight + 1 < Grid.Count())
+                    {
+                        if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight + 1].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight + 1].value == "BGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Bottom Right
+                    if (Grid.IndexOf(box) + SelectScreen.GridHeight - 1 < Grid.Count())
+                    {
+                        if (Grid[Grid.IndexOf(box) + SelectScreen.GridHeight - 1].value == "Gem" || Grid[Grid.IndexOf(box) + SelectScreen.GridHeight - 1].value == "TGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Top Right
+                    if (Grid.IndexOf(box) - SelectScreen.GridHeight + 1 > 0)
+                    {
+                        if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight + 1].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight + 1].value == "BGem")
+                        {
+                            counter++;
+                        }
+                    }
+                    // Bottom Left
+                    if (Grid.IndexOf(box) - SelectScreen.GridHeight - 1 > 0)
+                    {
+                        if (Grid[Grid.IndexOf(box) - SelectScreen.GridHeight - 1].value == "Gem" || Grid[Grid.IndexOf(box) - SelectScreen.GridHeight - 1].value == "TGem")
+                        {
+                            counter++;
+                        }
+                    }
+
+                    box.value = Convert.ToString(counter);
+                }
+            }
         }
     }
 }

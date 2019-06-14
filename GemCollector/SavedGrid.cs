@@ -15,11 +15,38 @@ namespace GemCollector
         {
             Grid = _Grid;
             name = _name;
+        }
 
-            foreach(GridBox b in Grid)
+        public void OnLoad()
+        {
+            foreach (GridBox b in Grid) // covers the entire grid
             {
                 b.appearence = "Invisible";
             }
+
+            int yFinder = 0;
+            int xFinder = 0;
+            int GemFinder = 0;
+            foreach (GridBox b in Grid)
+            {
+                // Determines the dimention and number of gems
+                b.appearence = "Invisible";
+                if (xFinder < b.x)
+                {
+                    xFinder = b.x;
+                }
+                if (yFinder < b.y)
+                {
+                    yFinder = b.y;
+                }
+                if ((b.value == "Gem") || (b.value == "TGem") || (b.value == "BGem"))
+                {
+                    GemFinder++;
+                }
+            }
+            SelectScreen.GridWidth = xFinder + 1;
+            SelectScreen.GemNum = GemFinder;
+            SelectScreen.GridHeight = yFinder + 1;
         }
     }
 }

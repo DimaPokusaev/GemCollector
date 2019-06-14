@@ -56,6 +56,7 @@ namespace GemCollector
 
         private void SelectScreen_Paint(object sender, PaintEventArgs e)
         {
+            // Main Lblels
             e.Graphics.DrawString("High Scores", new Font("Broadway", 50), new SolidBrush(Color.Black), new Point(570, 180));
             e.Graphics.DrawString("Difficulty", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(400, 250));
             e.Graphics.DrawString("Clicks", new Font("Broadway", 30), new SolidBrush(Color.Black), new Point(700, 250));
@@ -69,6 +70,7 @@ namespace GemCollector
                 }
                 if((300 + i * 20)< Screen.PrimaryScreen.Bounds.Height)
                 {
+                    // Lists the scores
                     e.Graphics.DrawString((scorelist[i].difficulty), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(450, 300 + 20 * i));
                     e.Graphics.DrawString((scorelist[i].clicks).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(750, 300 + 20 * i));
                     e.Graphics.DrawString((scorelist[i].time).ToString(), new Font("Eras Bold ITC", 14), new SolidBrush(Color.Black), new Point(1050, 300 + 20 * i));
@@ -87,6 +89,7 @@ namespace GemCollector
             menuClick.Play();
             dificulty = "Custom";
             CustomLevel cl = new CustomLevel();
+            cl.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - cl.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - cl.Height) / 2);
             Form a = this.FindForm();
             a.Controls.Remove(this);
             a.Controls.Add(cl);
@@ -132,8 +135,10 @@ namespace GemCollector
             menuClick.Play();
             dificulty = "Saved";
             GameScreen.Grid.Clear();
-            GameScreen.Grid = SelectScreen.SavedGrids[0].Grid;
+            GameScreen.Grid = SavedGrids[0].Grid;
+            SavedGrids[0].OnLoad();
             GameScreen.NewGrid = false;
+
             GameScreen gs = new GameScreen();
             Form f = this.FindForm();
             f.Controls.Remove(this);
@@ -157,6 +162,7 @@ namespace GemCollector
             Thread.Sleep(180);
             menuClick.Play();
             HelpScreen gs = new HelpScreen();
+            gs.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - gs.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - gs.Height) / 2);
             Form f = this.FindForm();
             f.Controls.Remove(this);
             f.Controls.Add(gs);
@@ -173,7 +179,7 @@ namespace GemCollector
             f.Controls.Add(gs);
         }
 
-        public void LoadSC()
+        public void LoadSC() // Load score
         {
             scorelist.Clear();
             string newD, newT, newC;
@@ -191,7 +197,7 @@ namespace GemCollector
                     reader.ReadToNextSibling("Time");
                     newC = reader.ReadString();
 
-                    HighScore hs = new HighScore(newD, Convert.ToInt32(newT), Convert.ToInt32(newC), "");
+                    HighScore hs = new HighScore(newD, Convert.ToInt32(newT), Convert.ToInt32(newC));
                     scorelist.Add(hs);
                 }
 

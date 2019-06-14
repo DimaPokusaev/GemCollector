@@ -15,6 +15,7 @@ namespace GemCollector
         public HelpScreen()
         {
             InitializeComponent();
+            // Need to center
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

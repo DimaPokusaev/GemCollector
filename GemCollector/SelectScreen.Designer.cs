@@ -201,7 +201,7 @@ namespace GemCollector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::GemCollector.Properties.Resources.background_for_gemcollector;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.TitleLable);
             this.Controls.Add(this.SortByClicks);

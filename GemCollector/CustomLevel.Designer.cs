@@ -40,57 +40,72 @@
             // 
             // HeightInput
             // 
-            this.HeightInput.Location = new System.Drawing.Point(124, 97);
+            this.HeightInput.Location = new System.Drawing.Point(244, 94);
+            this.HeightInput.Margin = new System.Windows.Forms.Padding(4);
             this.HeightInput.Name = "HeightInput";
-            this.HeightInput.Size = new System.Drawing.Size(100, 20);
+            this.HeightInput.Size = new System.Drawing.Size(132, 22);
             this.HeightInput.TabIndex = 0;
             // 
             // GemInput
             // 
-            this.GemInput.Location = new System.Drawing.Point(124, 172);
+            this.GemInput.Location = new System.Drawing.Point(245, 230);
+            this.GemInput.Margin = new System.Windows.Forms.Padding(4);
             this.GemInput.Name = "GemInput";
-            this.GemInput.Size = new System.Drawing.Size(100, 20);
+            this.GemInput.Size = new System.Drawing.Size(132, 22);
             this.GemInput.TabIndex = 1;
             // 
             // WidthInput
             // 
-            this.WidthInput.Location = new System.Drawing.Point(124, 133);
+            this.WidthInput.Location = new System.Drawing.Point(245, 164);
+            this.WidthInput.Margin = new System.Windows.Forms.Padding(4);
             this.WidthInput.Name = "WidthInput";
-            this.WidthInput.Size = new System.Drawing.Size(100, 20);
+            this.WidthInput.Size = new System.Drawing.Size(132, 22);
             this.WidthInput.TabIndex = 2;
             // 
             // HeightLable
             // 
             this.HeightLable.AutoSize = true;
-            this.HeightLable.Location = new System.Drawing.Point(80, 100);
+            this.HeightLable.Font = new System.Drawing.Font("Lucida Fax", 20F);
+            this.HeightLable.Location = new System.Drawing.Point(95, 79);
+            this.HeightLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HeightLable.Name = "HeightLable";
-            this.HeightLable.Size = new System.Drawing.Size(38, 13);
+            this.HeightLable.Size = new System.Drawing.Size(130, 39);
             this.HeightLable.TabIndex = 3;
             this.HeightLable.Text = "Height";
             // 
             // WidthLable
             // 
             this.WidthLable.AutoSize = true;
-            this.WidthLable.Location = new System.Drawing.Point(80, 136);
+            this.WidthLable.Font = new System.Drawing.Font("Lucida Fax", 20F);
+            this.WidthLable.Location = new System.Drawing.Point(95, 147);
+            this.WidthLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.WidthLable.Name = "WidthLable";
-            this.WidthLable.Size = new System.Drawing.Size(35, 13);
+            this.WidthLable.Size = new System.Drawing.Size(118, 39);
             this.WidthLable.TabIndex = 4;
             this.WidthLable.Text = "Width";
             // 
             // GemsLable
             // 
             this.GemsLable.AutoSize = true;
-            this.GemsLable.Location = new System.Drawing.Point(80, 175);
+            this.GemsLable.Font = new System.Drawing.Font("Lucida Fax", 20F);
+            this.GemsLable.Location = new System.Drawing.Point(95, 213);
+            this.GemsLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.GemsLable.Name = "GemsLable";
-            this.GemsLable.Size = new System.Drawing.Size(34, 13);
+            this.GemsLable.Size = new System.Drawing.Size(112, 39);
             this.GemsLable.TabIndex = 5;
             this.GemsLable.Text = "Gems";
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(241, 95);
+            this.StartButton.BackColor = System.Drawing.Color.DimGray;
+            this.StartButton.FlatAppearance.BorderSize = 7;
+            this.StartButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartButton.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartButton.Location = new System.Drawing.Point(403, 109);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(4);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(187, 97);
+            this.StartButton.Size = new System.Drawing.Size(278, 119);
             this.StartButton.TabIndex = 6;
             this.StartButton.Text = "Wanna start the game now?";
             this.StartButton.UseVisualStyleBackColor = true;
@@ -99,15 +114,18 @@
             // OutputLabel
             // 
             this.OutputLabel.AutoSize = true;
-            this.OutputLabel.Location = new System.Drawing.Point(139, 64);
+            this.OutputLabel.Font = new System.Drawing.Font("Lucida Fax", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutputLabel.Location = new System.Drawing.Point(207, 300);
+            this.OutputLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OutputLabel.Name = "OutputLabel";
-            this.OutputLabel.Size = new System.Drawing.Size(0, 13);
+            this.OutputLabel.Size = new System.Drawing.Size(0, 55);
             this.OutputLabel.TabIndex = 7;
             // 
             // CustomLevel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.GemsLable);
@@ -116,9 +134,9 @@
             this.Controls.Add(this.WidthInput);
             this.Controls.Add(this.GemInput);
             this.Controls.Add(this.HeightInput);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CustomLevel";
-            this.Size = new System.Drawing.Size(462, 291);
-            this.Load += new System.EventHandler(this.CustomLevel_Load);
+            this.Size = new System.Drawing.Size(930, 407);
             this.ResumeLayout(false);
             this.PerformLayout();
 

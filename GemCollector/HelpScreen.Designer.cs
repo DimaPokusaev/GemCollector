@@ -73,7 +73,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Image = global::GemCollector.Properties.Resources.help_image;
-            this.label1.Location = new System.Drawing.Point(4, 91);
+            this.label1.Location = new System.Drawing.Point(-3, 142);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(517, 451);
@@ -81,7 +81,11 @@
             // 
             // ExitButton
             // 
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.ExitButton.BackColor = System.Drawing.Color.DimGray;
+            this.ExitButton.FlatAppearance.BorderSize = 7;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Lucida Fax", 20F, System.Drawing.FontStyle.Bold);
             this.ExitButton.Location = new System.Drawing.Point(1192, 568);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(139, 96);
@@ -94,15 +98,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HelpScreen";
-            this.Size = new System.Drawing.Size(1345, 682);
+            this.Size = new System.Drawing.Size(1377, 693);
             this.ResumeLayout(false);
             this.PerformLayout();
 

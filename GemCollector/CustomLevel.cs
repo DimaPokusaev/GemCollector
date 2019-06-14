@@ -19,10 +19,6 @@ namespace GemCollector
             InitializeComponent();
         }
 
-        private void CustomLevel_Load(object sender, EventArgs e)
-        {
-        }
-
         private void StartButton_Click(object sender, EventArgs e)
         {
             int total;
@@ -51,6 +47,7 @@ namespace GemCollector
                 }
                 else
                 {
+                    GameScreen.NewGrid = true;
                     Thread.Sleep(180);
                     SelectScreen.menuClick.Play();
                     GameScreen gs = new GameScreen();
@@ -64,6 +61,6 @@ namespace GemCollector
             {
                 OutputLabel.Text = "Must Enter Intagers";
             }
-        }     
+        }
     }
 }

@@ -9,14 +9,13 @@ namespace GemCollector
     public class HighScore
     {
         public int time, clicks;
-        public string name, difficulty;
+        public string difficulty;
 
-        public HighScore(string _difficulty, int _time, int _clicks, string _name)
+        public HighScore(string _difficulty, int _time, int _clicks)
         {
             difficulty = _difficulty;
             time = _time;
             clicks = _clicks;
-            name = _name;
         }
     }
 }

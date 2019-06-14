@@ -45,7 +45,7 @@
             this.ClickLable.BackColor = System.Drawing.Color.Transparent;
             this.ClickLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClickLable.ForeColor = System.Drawing.Color.Black;
-            this.ClickLable.Location = new System.Drawing.Point(1566, 68);
+            this.ClickLable.Location = new System.Drawing.Point(1553, 41);
             this.ClickLable.Name = "ClickLable";
             this.ClickLable.Size = new System.Drawing.Size(323, 38);
             this.ClickLable.TabIndex = 0;
@@ -57,7 +57,7 @@
             this.TimeLable.BackColor = System.Drawing.Color.Transparent;
             this.TimeLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeLable.ForeColor = System.Drawing.Color.Black;
-            this.TimeLable.Location = new System.Drawing.Point(1566, 129);
+            this.TimeLable.Location = new System.Drawing.Point(1553, 102);
             this.TimeLable.Name = "TimeLable";
             this.TimeLable.Size = new System.Drawing.Size(225, 38);
             this.TimeLable.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.FlagLable.BackColor = System.Drawing.Color.Transparent;
             this.FlagLable.Font = new System.Drawing.Font("Lucida Fax", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FlagLable.ForeColor = System.Drawing.Color.Black;
-            this.FlagLable.Location = new System.Drawing.Point(1566, 202);
+            this.FlagLable.Location = new System.Drawing.Point(1553, 175);
             this.FlagLable.Name = "FlagLable";
             this.FlagLable.Size = new System.Drawing.Size(187, 38);
             this.FlagLable.TabIndex = 2;
@@ -83,11 +83,16 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(1569, 280);
+            this.BackButton.BackColor = System.Drawing.Color.DimGray;
+            this.BackButton.FlatAppearance.BorderSize = 7;
+            this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.BackButton.Location = new System.Drawing.Point(1556, 253);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(153, 64);
+            this.BackButton.Size = new System.Drawing.Size(233, 64);
             this.BackButton.TabIndex = 3;
-            this.BackButton.Text = "Back button\r\n";
+            this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
@@ -105,9 +110,14 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(1569, 380);
+            this.SaveButton.BackColor = System.Drawing.Color.DimGray;
+            this.SaveButton.FlatAppearance.BorderSize = 7;
+            this.SaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.SaveButton.Location = new System.Drawing.Point(1556, 353);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(153, 64);
+            this.SaveButton.Size = new System.Drawing.Size(233, 64);
             this.SaveButton.TabIndex = 6;
             this.SaveButton.Text = "Save Grid";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -128,7 +138,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(2050, 1080);
+            this.Size = new System.Drawing.Size(2050, 1980);
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GameScreen_MouseClick);
